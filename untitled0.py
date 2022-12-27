@@ -55,11 +55,12 @@ for i in range(1,2):
                 
                 content_of_target = []
                 for i, content in enumerate(content_of_web):
+                    
                     if (content == ''):
                         continue
                     if (content == '--'):  
                             break
-                    content_of_target.append(content)
+                    content_of_target.append(content.replace(",","，"))
                 content_of_target = ("".join(content_of_target))
                 warticle.write(count1+","+author+","+autitle+","+autime+","+content_of_target+"\n")
                 #---------------------
@@ -97,7 +98,7 @@ for i in range(1,2):
                 
                 tag_content = soup.findAll(class_ = "f3 push-content")
                 for content1 in tag_content:
-                    c4.append(content1.text[1:]+",")
+                    c4.append(content1.text[1:].replace(",","，")+",")
                 
                 tag_ipdatetime = soup.findAll(class_ = "push-ipdatetime")
                 for ipdatetime in tag_ipdatetime:
