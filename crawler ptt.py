@@ -103,7 +103,7 @@ for i in range(1057,1058):
                 c5=[]    
                 tag_userid = soup.findAll(class_ = "f3 hl push-userid") 
                 for user in tag_userid:
-                    c3.append(user.text+",")
+                    c3.append(user.text.replace(",","，")+",")
                     
                 
                 tag_content = soup.findAll(class_ = "f3 push-content")
