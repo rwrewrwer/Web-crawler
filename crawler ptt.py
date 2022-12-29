@@ -12,7 +12,7 @@ headers = {"cookie": "over18=1",
 warticle = open('article.csv',"w+",newline="",encoding="utf-8-sig")
 wcomment = open('comment.csv',"w+",newline="",encoding="utf-8-sig")
 wcomment_a = open('commend_a.csv',"w+",newline="",encoding="utf-8-sig")
-for i in range(102,103):
+for i in range(1057,1058):
     
     
     url1  = new_url + str(i) + ".html"
@@ -33,9 +33,9 @@ for i in range(102,103):
                 soup = BeautifulSoup(r.text,"lxml")
                 
                 tag_div = soup.findAll(class_ = "article-meta-value") # 作者 標題 時間
-                author = tag_div[0].text
+                author = tag_div[0].text.replace(",","，")
                 autitle = tag_div[2].text.replace(',','')
-                autime = tag_div[3].text 
+                autime = tag_div[3].text.replace(',','')
                 ym = autime[20:24]+autime[4:7]
                 if ym in dic.keys():
                     dic[ym] += 1
@@ -61,7 +61,7 @@ for i in range(102,103):
                             break
                     content_of_target.append(content.replace(",","，"))
                 content_of_target = ("".join(content_of_target))
-                content_of_target = content_of_target.replace("  ","" ).replace(" ","").replace("   ","").replace("    ","")
+                content_of_target = content_of_target.replace("  ","" ).replace(" ","").replace("   ","").replace(",","，")
                 warticle.write(count1+","+author+","+autitle+","+autime+","+content_of_target+"\n")
                
                 #---------------------
