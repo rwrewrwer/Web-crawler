@@ -12,7 +12,7 @@ headers = {"cookie": "over18=1",
 warticle = open('article.csv',"w+",newline="",encoding="utf-8-sig")
 wcomment = open('comment.csv',"w+",newline="",encoding="utf-8-sig")
 wcomment_a = open('commend_a.csv',"w+",newline="",encoding="utf-8-sig")
-for i in range(1,41):
+for i in range(102,103):
     
     
     url1  = new_url + str(i) + ".html"
@@ -61,6 +61,7 @@ for i in range(1,41):
                             break
                     content_of_target.append(content.replace(",","，"))
                 content_of_target = ("".join(content_of_target))
+                content_of_target = content_of_target.replace("  ","" ).replace(" ","").replace("   ","").replace("    ","")
                 warticle.write(count1+","+author+","+autitle+","+autime+","+content_of_target+"\n")
                
                 #---------------------
